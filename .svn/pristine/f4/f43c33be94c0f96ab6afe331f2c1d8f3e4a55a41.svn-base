@@ -1,0 +1,79 @@
+package com.mygdx.game.Fields;
+
+import com.badlogic.gdx.graphics.Texture;
+import com.mygdx.game.EnumOfFileds.KindOfPlayerEnum;
+import com.mygdx.game.EnumOfFileds.StatusEnum;
+public class Field {
+
+    private Texture texture;
+    private int width;
+    private int height;
+    private int status;
+    private KindOfPlayerEnum kindOfPlayer;
+    private StatusEnum statusEnum;
+
+    public Field(Texture texture, StatusEnum statusEnum) {
+
+        this.statusEnum = statusEnum;
+        this.texture = texture;
+        this.height = texture.getHeight();
+        this.width = texture.getWidth();
+        whichPlayer();
+    }
+
+    // public Field() {
+
+    //}
+
+    private void whichPlayer() {
+        if (this.statusEnum == StatusEnum.BLACK_PAWN_FIELD) {
+            kindOfPlayer = KindOfPlayerEnum.BLACK_PLAYER;
+        } else if (this.statusEnum == StatusEnum.WHITE_PAWN_FIELD) {
+            kindOfPlayer = KindOfPlayerEnum.WHITE_PLAYER;
+
+        } else
+            kindOfPlayer = KindOfPlayerEnum.FIELD_WITHOUT_PLAYER;
+    }
+
+    public Texture getTexture() {
+        return texture;
+    }
+
+    public void setTexture(Texture texture) {
+        this.texture = texture;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public StatusEnum getStatus() {
+        return statusEnum;
+    }
+
+    public void setStatus(StatusEnum status) {
+        this.statusEnum = status;
+    }
+
+    public KindOfPlayerEnum getKindOfPlayer() {
+        return kindOfPlayer;
+    }
+
+    public void setKindOfPlayer(KindOfPlayerEnum kindOfPlayerEnum) {
+        this.kindOfPlayer = kindOfPlayerEnum;
+    }
+}
+
+

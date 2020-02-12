@@ -1,0 +1,8 @@
+package com.mygdx.game.EnumOfFileds;
+
+public enum StatusEnum {
+    WHITE_PAWN_FIELD,
+    BLACK_PAWN_FIELD,
+    WHITE_FREE_FIELD,
+    BLACK_FREE_FIELD
+}

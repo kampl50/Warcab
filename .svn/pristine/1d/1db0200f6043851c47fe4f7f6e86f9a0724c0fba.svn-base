@@ -1,0 +1,52 @@
+package com.mygdx.game.desktop;
+
+import WarcabGame.CheckersGame;
+import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
+import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+import java.io.*;
+import java.net.*;
+
+public  class DesktopServer {
+    public static void main (String[] arg) {
+        CheckersGame WGS = new CheckersGame();
+        LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+        new LwjglApplication( WGS, config);
+        config.width = 1400;
+        config.height = 1000;
+
+        try{
+            ServerSocket myServerSocket = new ServerSocket(999); //stworzenie gniazda servwera i przypisanie mu portu (tu 9999)
+
+            // Oczekiwanie na połączenie od hosta
+            System.out.println("Serwer: Start na hoście-"
+                    +InetAddress.getLocalHost().getCanonicalHostName()
+                    +" port: "+myServerSocket.getLocalPort());
+            
+            Socket skt = myServerSocket.accept();
+
+            //Opcje odczytu i zapisu z i do strumienia
+            BufferedReader Input = new BufferedReader(new InputStreamReader(skt.getInputStream())); //odczyt
+            PrintStream Output = new PrintStream(skt.getOutputStream());                            //zapis
+
+            //Próba odczytania wejścia ze strumienia
+            String buf = Input.readLine();
+
+            //Sprawdzenie, czy serwer odebrał wiadomość i próba odpisania hostowi
+            if (buf !=null){
+                System.out.println("Serwer, odczyt: [ "+buf+" ]");
+                Output.print("Serwer: No siemka!"); //Odpowiedź dla hosta w przypadku odebrania wiadomości
+            }
+            // Zamknięcie połączenia ze strony serwera
+            skt.close();
+            System.out.println("Serwer - Odłączony");
+
+        }
+        catch (IOException ex){
+            ex.printStackTrace();
+            System.out.println("Uuuups, coś się skopało. nie podziałam!");
+        }
+    }
+
+
+    }
+

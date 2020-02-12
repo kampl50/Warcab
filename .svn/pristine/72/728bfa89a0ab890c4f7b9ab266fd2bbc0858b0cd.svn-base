@@ -1,0 +1,127 @@
+package com.mygdx.game.Chessboard;
+
+import com.badlogic.gdx.graphics.Texture;
+import com.mygdx.game.Fields.Field;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
+import com.mygdx.game.EnumOfFileds.StatusEnum;
+public class Chessboard {
+
+    Texture white_t,black_t,white_t_p,black_t_p,frame_t;
+    SpriteBatch batch;
+    public  Field fieldsOfChessboard[][] = new Field[8][8];
+
+    public Chessboard()
+    {
+        generuj_plansze();
+        frame_t = new Texture("RAMKA_910x910.jpg");
+
+    }
+    public Texture getFrame_t()
+    {
+        return frame_t;
+    }
+
+    public Field getFieldsOfChessboard(int i,int j) {
+
+        return fieldsOfChessboard[i][j];
+    }
+
+    public void setFieldsOfChessboard(Field[][] fieldsOfChessboard) {
+        this.fieldsOfChessboard = fieldsOfChessboard;
+    }
+
+    public Texture getTextureOfField(Field field) {
+        return field.getTexture();
+    }
+
+    public void generuj_plansze()
+   {
+       for(int i =0 ;i<3;i++)
+       {
+
+           for(int j = 0;j<8;j++)
+           {
+               if(i%2!=0)
+               {
+                   if(j%2==0)
+                   {
+                       fieldsOfChessboard[i][j] = new Field(white_t = new Texture("BIALY_110x110.png"),StatusEnum.WHITE_FREE_FIELD);
+                       //System.out.println("RODZAJ GRACZA POLA WLNEGO :" + fieldsOfChessboard[i][j].getKindOfPlayer());
+                   }
+                   else {
+                       fieldsOfChessboard[i][j] = new Field(black_t_p = new Texture("CZARNY_PIONEK_110x110.png"), StatusEnum.BLACK_PAWN_FIELD);
+                      // System.out.println("RODZAJ GRACZA PIONKA CZARNEGO :" + fieldsOfChessboard[i][j].getKindOfPlayer());
+                   }
+               }
+               else
+               {
+                   if(j%2==0)
+                   {
+                       fieldsOfChessboard[i][j] = new Field(black_t_p = new Texture("CZARNY_PIONEK_110x110.png"),StatusEnum.BLACK_PAWN_FIELD);
+                   }
+                   else
+                       fieldsOfChessboard[i][j] = new Field(white_t = new Texture("BIALY_110x110.png"),StatusEnum.WHITE_FREE_FIELD);
+
+               }
+           }
+       }
+
+       for(int i =3 ;i<5;i++)
+       {
+
+           for(int j = 0;j<8;j++)
+           {
+               if(i%2!=0)
+               {
+                   if(j%2==0)
+                   {
+                       fieldsOfChessboard[i][j] = new Field(white_t= new Texture("BIALY_110x110.png"),StatusEnum.WHITE_FREE_FIELD);
+                   }
+                   else
+                       fieldsOfChessboard[i][j] = new Field(black_t= new Texture("CZARNY_110x110.png"),StatusEnum.BLACK_FREE_FIELD);
+               }
+               else
+               {
+                   if(j%2==0)
+                   {
+                       fieldsOfChessboard[i][j] = new Field(black_t= new Texture("CZARNY_110x110.png"),StatusEnum.BLACK_PAWN_FIELD);
+                   }
+                   else
+                       fieldsOfChessboard[i][j] = new Field(white_t= new Texture("BIALY_110x110.png"),StatusEnum.WHITE_FREE_FIELD);
+               }
+           }
+       }
+
+
+
+       for(int i =5 ;i<8;i++)
+       {
+
+           for(int j = 0;j<8;j++)
+           {
+               if(i%2!=0)
+               {
+                   if(j%2==0)
+                   {
+                       fieldsOfChessboard[i][j] = new Field(white_t= new Texture("BIALY_110x110.png"),StatusEnum.WHITE_FREE_FIELD);
+                   }
+                   else
+                       fieldsOfChessboard[i][j] = new Field(black_t_p = new Texture("BIALY_PIONEK_110x110.png"), StatusEnum.WHITE_PAWN_FIELD);
+               }
+               else
+               {
+                   if(j%2==0)
+                   {
+                       fieldsOfChessboard[i][j] = new Field(black_t_p = new Texture("BIALY_PIONEK_110x110.png"),StatusEnum.WHITE_PAWN_FIELD);
+                   }
+                   else
+                       fieldsOfChessboard[i][j] = new Field(white_t= new Texture("BIALY_110x110.png"),StatusEnum.WHITE_FREE_FIELD);
+               }
+           }
+       }
+
+
+   }
+
+}

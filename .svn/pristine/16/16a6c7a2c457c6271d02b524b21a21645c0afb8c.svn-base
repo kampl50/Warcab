@@ -1,0 +1,172 @@
+package com.mygdx.game;
+
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.game.Chessboard.Chessboard;
+import com.mygdx.game.Fields.Field;
+
+public  class CheckersGameGDX implements Screen {
+
+    SpriteBatch batch;
+    Texture img;
+    Chessboard chessboard;
+
+   public CheckersGameGDX()
+   {
+   }
+
+    @Override
+    public void show() {
+        batch = new SpriteBatch();
+        chessboard = new Chessboard();
+       // img = new Texture("badlogic.jpg");
+
+    }
+
+    @Override
+    public void render(float delta) {
+        Gdx.gl.glClearColor(0, 0, 0, 0);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        batch.begin();
+        chessboard.generuj_plansze();
+        batch.draw(chessboard.getFrame_t(),245,48);
+        rysuj_plansze();
+        batch.end();
+    }
+
+    @Override
+    public void resize(int width, int height) {
+
+    }
+
+    @Override
+    public void pause() {
+
+    }
+
+    @Override
+    public void resume() {
+
+    }
+
+    @Override
+    public void hide() {
+
+    }
+
+    @Override
+    public void dispose () {
+        batch.dispose();
+        chessboard.getFrame_t().dispose();
+        for(int i =0 ;i<8;i++)
+            for(int j = 0;j<8;j++)
+        chessboard.fieldsOfChessboard[i][j].getTexture().dispose();
+
+
+    }
+    void server()
+    {
+
+    }
+
+    void rysuj_plansze()
+    {
+        for(int i =0 ;i<3;i++)
+        {
+
+            for(int j = 0;j<8;j++)
+            {
+                if(i%2!=0)
+                {
+                    if(j%2==0)
+                    {
+                        batch.draw(chessboard.getFieldsOfChessboard(i,j).getTexture(),260+chessboard.fieldsOfChessboard[i][j].getTexture().getWidth()*j,60+i*chessboard.fieldsOfChessboard[i][j].getTexture().getHeight());
+                    }
+                    else
+                       //fieldsOfChessboard[i][j] = new Field(black_t_p= new Texture("BIALY_110x110.png"),2);
+                        batch.draw(chessboard.getFieldsOfChessboard(i,j).getTexture(),260+chessboard.fieldsOfChessboard[i][j].getTexture().getWidth()*j,60+i*chessboard.fieldsOfChessboard[i][j].getTexture().getHeight());
+                }
+                else
+                {
+                    if(j%2!=0)
+                    {
+                       // fieldsOfChessboard[i][j] = new Field(black_t_p= new Texture("BIALY_110x110.png"),2);
+                        batch.draw(chessboard.getFieldsOfChessboard(i,j).getTexture(),260+chessboard.fieldsOfChessboard[i][j].getTexture().getWidth()*j,60+i*chessboard.fieldsOfChessboard[i][j].getTexture().getHeight());
+                    }
+                    else
+                      //  fieldsOfChessboard[i][j] = new Field(white_t= new Texture("BIALY_110x110.png"),1);
+                        batch.draw(chessboard.getFieldsOfChessboard(i,j).getTexture(),260+chessboard.fieldsOfChessboard[i][j].getTexture().getWidth()*j,60+i*chessboard.fieldsOfChessboard[i][j].getTexture().getHeight());
+                }
+            }
+        }
+
+        for(int i =3 ;i<5;i++)
+        {
+
+            for(int j = 0;j<8;j++)
+            {
+                if(i%2!=0)
+                {
+                    if(j%2==0)
+                    {
+                     //   fieldsOfChessboard[i][j] = new Field(white_t= new Texture("BIALY_110x110.png"),1);
+                        batch.draw(chessboard.getFieldsOfChessboard(i,j).getTexture(),260+chessboard.fieldsOfChessboard[i][j].getTexture().getWidth()*j,60+i*chessboard.fieldsOfChessboard[i][j].getTexture().getHeight());
+                    }
+                    else
+                     //   fieldsOfChessboard[i][j] = new Field(black_t= new Texture("BIALY_110x110.png"),2);
+                        batch.draw(chessboard.getFieldsOfChessboard(i,j).getTexture(),260+chessboard.fieldsOfChessboard[i][j].getTexture().getWidth()*j,60+i*chessboard.fieldsOfChessboard[i][j].getTexture().getHeight());
+                }
+                else
+                {
+                    if(j%2!=0)
+                    {
+                       // fieldsOfChessboard[i][j] = new Field(black_t= new Texture("BIALY_110x110.png"),2);
+                        batch.draw(chessboard.getFieldsOfChessboard(i,j).getTexture(),260+chessboard.fieldsOfChessboard[i][j].getTexture().getWidth()*j,60+i*chessboard.fieldsOfChessboard[i][j].getTexture().getHeight());
+                    }
+                    else
+                     //   fieldsOfChessboard[i][j] = new Field(white_t= new Texture("BIALY_110x110.png"),1);
+                        batch.draw(chessboard.getFieldsOfChessboard(i,j).getTexture(),260+chessboard.fieldsOfChessboard[i][j].getTexture().getWidth()*j,60+i*chessboard.fieldsOfChessboard[i][j].getTexture().getHeight());
+                }
+            }
+        }
+
+
+
+        for(int i =5 ;i<8;i++)
+        {
+
+            for(int j = 0;j<8;j++)
+            {
+                if(i%2!=0)
+                {
+                    if(j%2==0)
+                    {
+                       // fieldsOfChessboard[i][j] = new Field(white_t= new Texture("BIALY_110x110.png"),1);
+                        batch.draw(chessboard.getFieldsOfChessboard(i,j).getTexture(),260+chessboard.fieldsOfChessboard[i][j].getTexture().getWidth()*j,60+i*chessboard.fieldsOfChessboard[i][j].getTexture().getHeight());
+                    }
+                    else
+                      //  fieldsOfChessboard[i][j] = new Field(black_t_p= new Texture("BIALY_110x110.png"),2);
+                        batch.draw(chessboard.getFieldsOfChessboard(i,j).getTexture(),260+chessboard.fieldsOfChessboard[i][j].getTexture().getWidth()*j,60+i*chessboard.fieldsOfChessboard[i][j].getTexture().getHeight());
+                }
+                else
+                {
+                    if(j%2!=0)
+                    {
+                       // fieldsOfChessboard[i][j] = new Field(black_t_p= new Texture("BIALY_110x110.png"),2);
+                        batch.draw(chessboard.getFieldsOfChessboard(i,j).getTexture(),260+chessboard.fieldsOfChessboard[i][j].getTexture().getWidth()*j,60+i*chessboard.fieldsOfChessboard[i][j].getTexture().getHeight());
+                    }
+                    else
+                      //  fieldsOfChessboard[i][j] = new Field(white_t= new Texture("BIALY_110x110.png"),1);
+                        batch.draw(chessboard.getFieldsOfChessboard(i,j).getTexture(),260+chessboard.fieldsOfChessboard[i][j].getTexture().getWidth()*j,60+i*chessboard.fieldsOfChessboard[i][j].getTexture().getHeight());
+                }
+            }
+        }
+
+
+    }
+
+}

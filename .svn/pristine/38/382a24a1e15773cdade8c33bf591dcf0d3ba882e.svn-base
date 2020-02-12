@@ -1,0 +1,25 @@
+package WarcabGame;
+
+import WarcabGame.Screens.CheckersGameScreen;
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
+public class CheckersGame extends Game {
+
+    public SpriteBatch batch;
+
+
+
+    public void create() {
+        batch = new SpriteBatch();
+        this.setScreen(new CheckersGameScreen());
+
+
+    }
+
+    public void render() {
+        super.render();
+
+    }
+
+}
